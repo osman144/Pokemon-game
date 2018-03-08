@@ -1,12 +1,12 @@
-var BoxOpened = "";
-var ImgOpened = "";
-var Counter = 0;
-var ImgFound = 0;
+let BoxOpened = "";
+let ImgOpened = "";
+let Counter = 0;
+let ImgFound = 0;
 
-var Source = "#boxcard";
+let Source = "#boxcard";
 
 let ImgSource = [
-    "https://vignette.wikia.nocookie.net/pokemon/images/c/c6/027Sandshrew_AG_anime.png/revision/latest?cb=20140906222809",
+    "https://vignette.wikia.nocookie.net/pokemon/images/0/05/376Metagross.png/revision/latest/scale-to-width-down/200?cb=20140329025100",
     "https://vignette.wikia.nocookie.net/pokemon/images/2/21/001Bulbasaur.png/revision/latest/scale-to-width-down/200?cb=20140328190757",
     "https://vignette.wikia.nocookie.net/pokemon/images/7/7e/006Charizard.png/revision/latest/scale-to-width-down/200?cb=20140328191325",
     "https://vignette.wikia.nocookie.net/pokemon/images/3/39/007Squirtle.png/revision/latest/scale-to-width-down/200?cb=20140328191525",
@@ -33,19 +33,19 @@ function RandomFunction(MaxValue, MinValue) {
 }
 
 function ShuffleImages() {
-	var ImgAll = $(Source).children();
-	var ImgThis = $(Source + " div:first-child");
-	var ImgArr = new Array();
+	let ImgAll = $(Source).children();
+	let ImgThis = $(Source + " div:first-child");
+	let ImgArr = new Array();
 
-	for (var i = 0; i < ImgAll.length; i++) {
+	for (let i = 0; i < ImgAll.length; i++) {
 		ImgArr[i] = $("#" + ImgThis.attr("id") + " img").attr("src");
 		ImgThis = ImgThis.next();
 	}
 	
 		ImgThis = $(Source + " div:first-child");
 
-    for (var z = 0; z < ImgAll.length; z++) {
-        var RandomNumber = RandomFunction(0, ImgArr.length - 1);
+    for (let z = 0; z < ImgAll.length; z++) {
+        let RandomNumber = RandomFunction(0, ImgArr.length - 1);
     
             $("#" + ImgThis.attr("id") + " img").attr("src", ImgArr[RandomNumber]);
             ImgArr.splice(RandomNumber, 1);
@@ -69,7 +69,7 @@ function ResetGame() {
 
 
 function OpenCard() {
-	var id = $(this).attr("id");
+	let id = $(this).attr("id");
 
 	if ($("#" + id + " img").is(":hidden")) {
 		$(Source + " div").unbind("click", OpenCard);
@@ -114,7 +114,7 @@ function OpenCard() {
 
 $(function() {
 
-    for (var y = 1; y < 3 ; y++) {
+    for (let y = 1; y < 3 ; y++) {
         $.each(ImgSource, function(i, val) {
             $(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
         });
